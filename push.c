@@ -40,17 +40,18 @@ void pall() {
 
 int main() {
     char opcode[100];
+    char value_str[100];
     int value;
 
     /* Assume opcode and value are read from input file or user input */
 
    /* Example usage */
     strcpy(opcode, "push");
-    value = 42;
+    strcpy(value_str, "42");
 
     if (strcmp(opcode, "push") == 0) {
-        if (value != 0 || strcmp(value, "0") == 0) {
-            push(atoi(value));
+        if (sscanf(value_str, "%d", &value) == 1) {
+            push(value);
         } else {
             printf("L%d: usage: push integer\n", __LINE__);
             exit(EXIT_FAILURE);
