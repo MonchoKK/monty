@@ -27,21 +27,35 @@ void push(int value) {
  * Function to print all elements in the stack
  */
 void pall() {
-    int i;
     if (top == -1) {
         /* Stack is empty, don't print anything */
         return;
     } else {
-        for (i = top; i >= 0; i--) {
+        for (int i = top; i >= 0; i--) {
             printf("%d\n", stack[i]);
         }
     }
 }
 
+/* Function to check if a string represents a valid integer */
+bool is_valid_integer(const char *str) {
+	if (!str || *str == '\0') {
+		return false;
+	}
+	if (*str == '+' || *str == '-') {
+		str++;
+	}
+	while (*str != '\0') {
+		if (!isdigit(*str)) {
+			return false;
+		}
+		str++;
+	}
+	return true;
+}
 int main() {
     char opcode[100];
     char value_str[100];
-    int value;
 
     /* Assume opcode and value are read from input file or user input */
 
@@ -50,12 +64,12 @@ int main() {
     strcpy(value_str, "42");
 
     if (strcmp(opcode, "push") == 0) {
-        if (sscanf(value_str, "%d", &value) == 1) {
-            push(value);
-        } else {
-            printf("L%d: usage: push integer\n", __LINE__);
+        if (!is_valid_integer(value_str)) {
+            printf("L%d: usage: push integer\n");
             exit(EXIT_FAILURE);
         }
+	int value = atoi(value_str);
+	push(value);
     } else if (strcmp(opcode, "pall") == 0) {
         pall();
     } else {

@@ -3,5 +3,6 @@
 
 void push(int value);
 void pall();
+bool is_valid_integer(const char *str);
 
 #endif /* MONTY_H */
