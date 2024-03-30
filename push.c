@@ -27,11 +27,11 @@ void push(int value) {
  * Function to print all elements in the stack
  */
 void pall() {
+	int i;
     if (top == -1) {
-        /* Stack is empty, don't print anything */
         return;
     } else {
-        for (int i = top; i >= 0; i--) {
+        for (i = top; i >= 0; i--) {
             printf("%d\n", stack[i]);
         }
     }
