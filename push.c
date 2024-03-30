@@ -49,8 +49,10 @@ int main() {
 
     if (strcmp(opcode, "push") == 0) {
         if (sscanf(value_str,"%d", &value) == 1) {
-            printf("L%d: usage: push integer\n", __LINE__);
-            exit(EXIT_FAILURE);
+            push(value);
+	} else {
+		printf("L%d: usage: push integer\n", __LINE__);
+		exit(EXIT_FAILURE);
         }
 	int value = atoi(value_str);
 	push(value);
