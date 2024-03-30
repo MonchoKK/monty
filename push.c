@@ -40,6 +40,7 @@ void pall() {
 int main() {
     char opcode[100];
     char value_str[100];
+    int value;
 
     /* Assume opcode and value are read from input file or user input */
 
