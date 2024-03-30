@@ -54,8 +54,7 @@ int main() {
 		printf("L%d: usage: push integer\n", __LINE__);
 		exit(EXIT_FAILURE);
         }
-	int value = atoi(value_str);
-	push(value);
+
     } else if (strcmp(opcode, "pall") == 0) {
         pall();
     } else {
