@@ -6,7 +6,7 @@
 #define STACK_SIZE 100
 
 int stack[STACK_SIZE];
-int top = -1; /* Stack is initially empty */
+int top = -1;
 
 /*
  * Function to push an element onto the stack
@@ -37,22 +37,6 @@ void pall() {
     }
 }
 
-/* Function to check if a string represents a valid integer */
-bool is_valid_integer(const char *str) {
-	if (!str || *str == '\0') {
-		return false;
-	}
-	if (*str == '+' || *str == '-') {
-		str++;
-	}
-	while (*str != '\0') {
-		if (!isdigit(*str)) {
-			return false;
-		}
-		str++;
-	}
-	return true;
-}
 int main() {
     char opcode[100];
     char value_str[100];
@@ -64,8 +48,8 @@ int main() {
     strcpy(value_str, "42");
 
     if (strcmp(opcode, "push") == 0) {
-        if (!is_valid_integer(value_str)) {
-            printf("L%d: usage: push integer\n");
+        if (sscanf(value_str,"%d", &value) == 1) {
+            printf("L%d: usage: push integer\n", __LINE__);
             exit(EXIT_FAILURE);
         }
 	int value = atoi(value_str);
